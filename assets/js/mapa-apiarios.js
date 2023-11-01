@@ -20,7 +20,7 @@
 //     // Personalize os marcadores e informações adicionais conforme necessário
 // }
 function initMap() {
-    // Coordenadas do centro do país
+    // Coordenadas do Obeservatório 
     var center = { lat: -10.5077, lng: -39.0159 };
     // Opções do mapa
     var mapOptions = {
@@ -32,19 +32,37 @@ function initMap() {
 
     // Array de objetos com informações sobre os pontos
     var apiarios = [
-        { nome: 'Observatório Apícola', lat: -10.5077, lng: -39.0159 },
-        { nome: 'Apiário de Tucano', lat: -10.9648, lng: -38.7929 },
-        { nome: 'Apiário de Monte Santo', lat: -10.4377, lng: -39.3315 },
+        { nome: 'Observatório Apícola', lat: -10.5077, lng: -39.0159, descricao:'Observatório Apícola' },
+        { nome: 'Apiário de Tucano', lat: -10.9648, lng: -38.7929, descricao:'Apiário de Tucano' },
+        { nome: 'Apiário de Monte Santo', lat: -10.4377, lng: -39.3315, descricao:'Apiário de Monte Santo' }
         // Adicione mais apiários conforme necessário
     ];
 
     // Loop para criar marcadores para cada apiário
     for (var i = 0; i < apiarios.length; i++) {
         var apiario = apiarios[i];
+        
         var marker = new google.maps.Marker({
             position: { lat: apiario.lat, lng: apiario.lng },
             map: map,
             title: apiario.nome
         });
+
+        function createInfoWindow(descricao) {
+            return new google.maps.InfoWindow({
+                content: descricao
+            });
+        }
+
+        // Crie uma instância de InfoWindow para o marcador atual
+        var infoWindow = createInfoWindow(apiario.descricao);
+
+        // Adicione um evento de clique para mostrar a janela de informações
+        //função imediatamente invocada (IIFE)
+        marker.addListener('click', (function (infoWindow) {
+            return function () {
+                infoWindow.open(map, this);
+            };
+        })(infoWindow));
     }
 }
