@@ -4594,7 +4594,7 @@
 			object-fit: contain;
 		}
 		
-		.prev, .next {
+		.prev-slide, .next-slide {
 			cursor: pointer;
 			position: absolute;
 			top: 50%;
@@ -4607,17 +4607,17 @@
 			background-color: rgba(0, 0, 0, 0.3);
 		}
 		
-		.prev {
+		.prev-slide {
 			left: 0;
 			border-radius: 3px 0 0 3px;
 		}
 		
-		.next {
+		.next-slide {
 			right: 0;
 			border-radius: 0 3px 3px 0;
 		}
 		
-		.prev:hover, .next:hover {
+		.prev-slide:hover, .next-slide:hover {
 			background-color: rgba(0, 0, 0, 0.8);
 		}
 		
