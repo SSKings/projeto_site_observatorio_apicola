@@ -28,6 +28,7 @@
 
 	body {
 		line-height: 1;
+		
 	}
 
 	ol, ul {
@@ -1899,7 +1900,7 @@
 	button,
 	.button {
 		background-color: #1abc9c;
-		color: #fff !important;
+		color: #000000 !important;
 	}
 
 		input[type="submit"]:hover,
@@ -3062,9 +3063,9 @@
 	}
 
 	#header {
-		background: #1c1c1c;
-		color: rgba(255, 255, 255, 0.75);
-		cursor: default;
+		background: #ffffff;
+		color: rgba(1, 1, 1, 0.75);
+		
 		height: 4.25em;
 		left: 0;
 		line-height: 4.25em;
@@ -3080,11 +3081,10 @@
 			height: inherit;
 			left: 1.25em;
 			line-height: inherit;
-			margin: 0;
+			margin: 5px;
 			padding: 0;
 			position: absolute;
 			top: 0;
-			color: #fff;
 			font-size: 1.25em;
 			text-decoration: none;
 		}
@@ -3092,6 +3092,14 @@
 			#header .logo strong {
 				color: inherit;
 				font-weight: 700;
+			}
+
+			#header .logo + a {
+				/* font-size: 1em; Tamanho da fonte */
+				position: absolute;
+				left: 6em;
+				margin-left: 10px;
+				color: rgb(0, 0, 0);
 			}
 
 		#header nav a {
@@ -3106,7 +3114,7 @@
 		}
 
 			#header nav a:hover {
-				color: #fff;
+				color: #040404;
 			}
 
 			#header nav a[href="#menu"] {
@@ -3308,10 +3316,10 @@
 /* Banner */
 
 	#banner {
-		background-color: #3498db;
-		color: rgba(255, 255, 255, 0.75);
+		background-color: #1abc9c;
+		color: rgba(0, 0, 0,);
 		text-align: center;
-		cursor: default;
+	
 		padding: 10em 4em 9em 4em;
 	}
 
@@ -3320,7 +3328,7 @@
 		}
 
 		#banner a {
-			color: #fff;
+			color: #0b0808;
 		}
 
 		#banner strong, #banner b {
@@ -3328,7 +3336,7 @@
 		}
 
 		#banner h1, #banner h2, #banner h3, #banner h4, #banner h5, #banner h6 {
-			color: #fff;
+			color: #000000;
 		}
 
 		#banner blockquote {
@@ -3353,8 +3361,9 @@
 		#banner input[type="button"],
 		#banner button,
 		#banner .button {
-			background-color: #1abc9c;
-			color: #fff !important;
+			background-color: #ffffff;
+			color: #000000 ;
+			border: 1px solid #000000;
 		}
 
 			#banner input[type="submit"]:hover,
@@ -3362,7 +3371,7 @@
 			#banner input[type="button"]:hover,
 			#banner button:hover,
 			#banner .button:hover {
-				background-color: #1dd2af;
+				background-color: #1abc9c;
 			}
 
 			#banner input[type="submit"]:active,
@@ -4556,3 +4565,59 @@
 			}
 
 		}
+
+
+		/*Slide*/
+		.slide {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+		
+		.slideshow-container {
+			max-width: 100%;
+			position: relative;
+		}
+		
+		.mySlides {
+			display: none;
+			width: 100%;
+		}
+		
+		.mySlides img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		
+		.prev, .next {
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			width: auto;
+			padding: 16px;
+			font-size: 24px;
+			font-weight: bold;
+			transition: 0.6s ease;
+			color: white;
+			background-color: rgba(0, 0, 0, 0.3);
+		}
+		
+		.prev {
+			left: 0;
+			border-radius: 3px 0 0 3px;
+		}
+		
+		.next {
+			right: 0;
+			border-radius: 0 3px 3px 0;
+		}
+		
+		.prev:hover, .next:hover {
+			background-color: rgba(0, 0, 0, 0.8);
+		}
+		

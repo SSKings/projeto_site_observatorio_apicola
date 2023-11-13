@@ -20,21 +20,30 @@
 //     // Personalize os marcadores e informações adicionais conforme necessário
 // }
 function initMap() {
+
+   
+
     // Coordenadas do Obeservatório 
     var center = { lat: -10.5077, lng: -39.0159 };
     // Opções do mapa
     var mapOptions = {
-        zoom: 8,
+        zoom: 10,
         center: center,
     };
     // Crie um mapa
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+    var directionsService = new google.maps.DirectionsService();
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+
     // Array de objetos com informações sobre os pontos
     var apiarios = [
         { nome: 'Observatório Apícola', lat: -10.5077, lng: -39.0159, descricao:'Observatório Apícola' },
-        { nome: 'Apiário de Tucano', lat: -10.9648, lng: -38.7929, descricao:'Apiário de Tucano' },
-        { nome: 'Apiário de Monte Santo', lat: -10.4377, lng: -39.3315, descricao:'Apiário de Monte Santo' }
+        { nome: 'APIÁRIO IRANDI SOUZA LIMA', lat: -10.52377, lng: -38.90462, descricao:'APIÁRIO IRANDI SOUZA LIMA' },
+        { nome: 'APIÁRIO IZAEL', lat: -10.51385, lng: -38.84638, descricao:'APIÁRIO IZAEL' },
+        { nome: 'APIÁRIO ALBERTO E ACÁSIO', lat: -10.50233, lng: -38.74745, descricao:'APIÁRIO ALBERTO E ACÁSIO' },
+        { nome: 'APIÁRIO JOSÉ ALVES', lat: -10.49954, lng: -38.74684, descricao:'APIÁRIO JOSÉ ALVES' }
         // Adicione mais apiários conforme necessário
     ];
 
@@ -48,21 +57,25 @@ function initMap() {
             title: apiario.nome
         });
 
-        function createInfoWindow(descricao) {
+        function createInfoWindow(infoContent) {
             return new google.maps.InfoWindow({
-                content: descricao
+                content: infoContent
             });
         }
 
+        var infoContent = apiario.nome;
+
         // Crie uma instância de InfoWindow para o marcador atual
-        var infoWindow = createInfoWindow(apiario.descricao);
+        var infoWindow = createInfoWindow(infoContent);
 
         // Adicione um evento de clique para mostrar a janela de informações
         //função imediatamente invocada (IIFE)
-        marker.addListener('click', (function (infoWindow) {
-            return function () {
-                infoWindow.open(map, this);
-            };
-        })(infoWindow));
+		marker.addListener('click', (function (infoWindow) {
+		    return function () {
+		        map.panTo(this.getPosition()); // Move o centro do mapa para a posição do marcador
+		        map.setZoom(16);
+		        infoWindow.open(map, this);
+		    };
+		})(infoWindow));
     }
 }
