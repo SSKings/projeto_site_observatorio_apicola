@@ -1,17 +1,17 @@
 version: 0.0
 os: linux
 files:
-  - sources: index.html
+  - sources: /ndex.html
     destinarion: /var/www/html/
 hooks:
   BeforeInstall:
-    - location: iscripts/install_depencencies
+    - location: /install_depencencies
       timout: 300
       runas: root
-    - location: iscripts/start_server
+    - location: /start_server
       timout: 300
       runas: root
   ApplicationStop:
-    - location: iscripts/install_depencencies
+    - location: /stop_server
       timout: 300
       runas: root
