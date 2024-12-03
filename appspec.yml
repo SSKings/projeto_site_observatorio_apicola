@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - sources: /ndex.html
+  - sources: /index.html
     destinarion: /var/www/html/
 hooks:
   BeforeInstall:
